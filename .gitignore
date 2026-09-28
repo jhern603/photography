@@ -1,0 +1,4 @@
+# Full-resolution originals: build.py makes the web copies in img/
+pics/
+
+__pycache__/
