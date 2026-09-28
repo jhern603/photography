@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jose Hernandez - Photography</title>
+  <meta name="description" content="Jose Hernandez Photography Portfolio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" data-site="name"></a>
+    <nav>
+      <a href="https://josehernandez.dev/">About</a>
+      <a href="mailto:jhern603@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="hero-img" id="hero-img" alt="">
+      <div class="hero-shade"></div>
+      <div class="hero-text">
+        <h1 data-site="name"></h1>
+        <p class="tagline" data-site="tagline"></p>
+        <a class="cta" href="#work">View the work</a>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <div class="work-head">
+        <h2>Selected work</h2>
+        <div class="filters" id="filters" role="tablist" aria-label="Filter by category"></div>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <section id="about" class="about">
+      <h2>About</h2>
+      <div class="about-body">
+        <p>Professional Software Engineer with a passion for photography. I like to capture objects, architecture, and people in their natural elements.</p>
+        <p>Shot on <span id="gear">Sony mirrorless</span>.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Let's work together</h2>
+      <p>Available for events, architecture, and more.</p>
+      <div class="contact-links" id="contact-links"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>&copy; <span id="year"></span> <span data-site="name"></span>. All rights reserved.</span>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+    <button class="lb-close" data-action="close" aria-label="Close">&times;</button>
+    <button class="lb-nav lb-prev" data-action="prev" aria-label="Previous photo">&#8249;</button>
+    <figure class="lb-figure">
+      <img id="lb-img" alt="">
+      <figcaption>
+        <div>
+          <span class="lb-title" id="lb-title"></span>
+          <span class="lb-cat" id="lb-cat"></span>
+        </div>
+        <div class="lb-exif" id="lb-exif"></div>
+      </figcaption>
+    </figure>
+    <button class="lb-nav lb-next" data-action="next" aria-label="Next photo">&#8250;</button>
+  </dialog>
+
+  <script src="photos.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

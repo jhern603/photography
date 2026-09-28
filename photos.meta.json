@@ -1,0 +1,110 @@
+{
+  "site": {
+    "name": "Jose Hernandez",
+    "tagline": "Architecture, aviation, and the people in between.",
+    "email": "jhern603@gmail.com",
+    "instagram": "jahphotography7",
+    "hero": "dsc01164"
+  },
+  "categories": [
+    "Architecture",
+    "Night",
+    "Aviation",
+    "People & Events",
+    "Details"
+  ],
+  "photos": {
+    "DSC00184.jpg": {
+      "title": "College of Business",
+      "category": "Architecture"
+    },
+    "DSC01559.jpg": {
+      "title": "Ryder Business Building",
+      "category": "Architecture"
+    },
+    "DSC02883.jpg": {
+      "title": "Window Rhythm",
+      "category": "Architecture"
+    },
+    "DSC07317.jpg": {
+      "title": "Spiral Stair",
+      "category": "Architecture"
+    },
+    "DSC01164.jpg": {
+      "title": "Campus After Dark",
+      "category": "Night"
+    },
+    "DSC01713.jpg": {
+      "title": "Panther on Watch",
+      "category": "Night"
+    },
+    "DSC06287.jpg": {
+      "title": "Atlas 747 on Final",
+      "category": "Aviation"
+    },
+    "DSC06305.jpg": {
+      "title": "American A321",
+      "category": "Aviation"
+    },
+    "DSC05187.jpg": {
+      "title": "Cardboard Regatta",
+      "category": "People & Events"
+    },
+    "DSC04282.jpg": {
+      "title": "Spikeball",
+      "category": "People & Events"
+    },
+    "DSC06600 (1).jpg": {
+      "title": "Whiteboard Session",
+      "category": "People & Events"
+    },
+    "DSC06619 (1).jpg": {
+      "title": "The Build",
+      "category": "People & Events"
+    },
+    "DSC01380.jpg": {
+      "title": "The Blitz",
+      "category": "People & Events"
+    },
+    "DSC00017.jpg": {
+      "title": "The Tackle",
+      "category": "People & Events"
+    },
+    "DSC02885.jpg": {
+      "title": "Spawnpoint",
+      "category": "People & Events"
+    },
+    "DSC02804.jpg": {
+      "title": "Flying Watermelon",
+      "category": "People & Events"
+    },
+    "DSC02722.jpg": {
+      "title": "Ball Drop",
+      "category": "People & Events"
+    },
+    "DSC04749.jpg": {
+      "title": "Mr & Mrs",
+      "category": "People & Events"
+    },
+    "DSC04775-Edit.jpg": {
+      "title": "The Wedding Rings",
+      "category": "People & Events"
+    },
+    "DSC05376.jpg": {
+      "title": "Celebration",
+      "category": "People & Events"
+    },
+    "DSC04949.jpg": {
+      "title": "The Promised Kiss",
+      "category": "People & Events"
+    },
+    "DSC07324.jpg": {
+      "title": "Vanishing Point",
+      "category": "Details"
+    },
+    "DSC07372.jpg": {
+      "title": "Radar Scope",
+      "category": "Details"
+    }
+  }
+}
