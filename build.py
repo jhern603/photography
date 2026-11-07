@@ -2,15 +2,19 @@
 
 Usage:  python build.py [--force]
 
-Reads originals from pics/, titles/categories from photos.meta.json, and writes:
+Reads originals from pics/, titles/categories/alt text from photos.meta.json, and writes:
   img/thumb/<slug>.jpg   grid images (1200px long edge)
   img/large/<slug>.jpg   lightbox images (2400px long edge)
   photos.js              data loaded by index.html
+  index.html             refreshes everything that must work without JavaScript
+  sitemap.xml            page and image sitemap for search engines
 
 Web copies are re-encoded without EXIF, so GPS and other metadata in the
 originals never reach the site. Only the camera settings listed below are kept.
 """
 
+import datetime
+import html
 import json
 import re
 import sys
@@ -73,6 +77,112 @@ def save_resized(img, dest, long_edge, quality, force):
     copy.convert("RGB").save(dest, "JPEG", quality=quality, optimize=True, progressive=True)
 
 
+def fill_block(page, name, content):
+    """Replace what sits between <!-- build:name --> and <!-- /build:name -->."""
+    pattern = rf"(<!-- build:{name} -->).*?(\s*<!-- /build:{name} -->)"
+    page, count = re.subn(pattern, lambda m: f"{m[1]}\n{content}{m[2]}", page, count=1, flags=re.S)
+    if not count:
+        raise SystemExit(f"index.html is missing the build:{name} markers")
+    return page
+
+
+def thumb_size(photo):
+    """Pixel size of a grid image, whose long edge is the thumb size unless the original is smaller."""
+    edge = SIZES["thumb"][0]
+    ratio = photo["ratio"]
+    return (edge, round(edge / ratio)) if ratio >= 1 else (round(edge * ratio), edge)
+
+
+def structured_data(site, photos):
+    url = site["url"]
+    person = {"@type": "Person", "name": site["name"], "url": site.get("portfolio", url)}
+    if site.get("instagram"):
+        person["sameAs"] = [f"https://instagram.com/{site['instagram'].lstrip('@')}"]
+    data = {
+        "@context": "https://schema.org",
+        "@type": "ImageGallery",
+        "name": f"{site['name']} Photography",
+        "description": site.get("tagline", ""),
+        "url": url,
+        "inLanguage": "en",
+        "author": person,
+        "image": [{
+            "@type": "ImageObject",
+            "contentUrl": url + p["large"],
+            "thumbnailUrl": url + p["thumb"],
+            "name": p["title"],
+            "description": p["alt"],
+            "creator": person,
+            "creditText": site["name"],
+            "copyrightNotice": f"© {site['name']}",
+        } for p in photos],
+    }
+    return json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+
+
+def write_index(site, photos):
+    """Put the content crawlers and no-JS visitors need directly into index.html."""
+    path = ROOT / "index.html"
+    page = path.read_text(encoding="utf-8")
+    e = lambda s: html.escape(str(s), quote=True)
+    url = site["url"]
+    hero = next((p for p in photos if p["id"] == site.get("hero")), photos[0])
+    w, h = thumb_size(hero)
+    image_alt = f"{hero['title']} by {site['name']}"
+
+    page = re.sub(r'(data-site="(\w+)"[^>]*>)[^<]*',
+                  lambda m: m[1] + e(site.get(m[2], "")), page)
+    page = re.sub(r'(id="year">)\d*', rf"\g<1>{datetime.date.today().year}", page)
+
+    page = fill_block(page, "social", "\n".join([
+        f'  <meta property="og:image" content="{e(url + hero["thumb"])}">',
+        f'  <meta property="og:image:width" content="{w}">',
+        f'  <meta property="og:image:height" content="{h}">',
+        f'  <meta property="og:image:alt" content="{e(image_alt)}">',
+        f'  <meta name="twitter:image" content="{e(url + hero["thumb"])}">',
+        f'  <meta name="twitter:image:alt" content="{e(image_alt)}">',
+        f'  <script type="application/ld+json">{structured_data(site, photos)}</script>',
+    ]))
+
+    page = fill_block(page, "hero", (
+        f'      <img class="hero-img" id="hero-img" src="{e(hero["large"])}" '
+        f'srcset="{e(hero["thumb"])} 1200w, {e(hero["large"])} 2400w" '
+        f'sizes="max(100vw, {round(100 * hero["ratio"])}vh)" width="{w}" height="{h}" '
+        f'alt="{e(hero["alt"])}" fetchpriority="high">'
+    ))
+
+    contact = []
+    if site.get("email"):
+        contact.append(f'        <a href="mailto:{e(site["email"])}">{e(site["email"])}</a>')
+    if site.get("instagram"):
+        handle = site["instagram"].lstrip("@")
+        contact.append(f'        <a href="https://instagram.com/{e(handle)}" target="_blank" rel="noopener">'
+                       f'@{e(handle)}<span class="visually-hidden"> on Instagram (opens in a new tab)</span></a>')
+    page = fill_block(page, "contact", "\n".join(contact))
+
+    items = []
+    for p in photos:
+        tw, th = thumb_size(p)
+        items.append(f'          <li><a href="{e(p["large"])}"><img src="{e(p["thumb"])}" alt="{e(p["alt"])}" '
+                     f'width="{tw}" height="{th}" loading="lazy" decoding="async">{e(p["title"])}</a></li>')
+    page = fill_block(page, "noscript", '        <noscript><ul class="noscript-gallery">\n'
+                      + "\n".join(items) + "\n        </ul></noscript>")
+    path.write_text(page, encoding="utf-8")
+
+
+def write_sitemap(site, photos):
+    url = html.escape(site["url"])
+    images = "\n".join(f"    <image:image><image:loc>{url}{html.escape(p['large'])}</image:loc></image:image>"
+                       for p in photos)
+    (ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+        '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+        f"  <url>\n    <loc>{url}</loc>\n{images}\n  </url>\n</urlset>\n",
+        encoding="utf-8",
+    )
+
+
 def main():
     force = "--force" in sys.argv
     meta = json.loads((ROOT / "photos.meta.json").read_text(encoding="utf-8"))
@@ -102,6 +212,7 @@ def main():
         photos.append({
             "id": slug,
             "title": info.get("title") or src.stem,
+            "alt": info.get("alt") or info.get("title") or src.stem,
             "category": info.get("category") or "Uncategorized",
             "ratio": round(w / h, 4),
             "thumb": f"img/thumb/{slug}.jpg",
@@ -110,14 +221,18 @@ def main():
         })
         print(f"  {src.name:<22} -> {slug}  {w}x{h}")
         if src.name not in photo_meta:
-            print(f"    (no entry in photos.meta.json — add a title and category)")
+            print(f"    (no entry in photos.meta.json — add a title, category, and alt text)")
+        elif not info.get("alt"):
+            print(f"    (no alt text in photos.meta.json — describe the photo for screen readers)")
 
     used = [c for c in categories if any(p["category"] == c for p in photos)]
     used += sorted({p["category"] for p in photos} - set(used))
     data = {"site": meta.get("site", {}), "categories": used, "photos": photos}
     js = "window.PORTFOLIO = " + json.dumps(data, indent=2, ensure_ascii=False) + ";\n"
     (ROOT / "photos.js").write_text(js, encoding="utf-8")
-    print(f"Wrote photos.js with {len(photos)} photos.")
+    write_index(data["site"], photos)
+    write_sitemap(data["site"], photos)
+    print(f"Wrote photos.js, index.html, and sitemap.xml with {len(photos)} photos.")
 
 
 if __name__ == "__main__":

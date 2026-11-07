@@ -4,32 +4,14 @@
     document.getElementById("gallery").textContent = "photos.js not found — run: python build.py";
     return;
   }
-  const { site, categories, photos } = data;
+  const { categories, photos } = data;
   const $ = (id) => document.getElementById(id);
 
-  // Site text
-  document.querySelectorAll("[data-site]").forEach((el) => {
-    el.textContent = site[el.dataset.site] || "";
-  });
-  document.title = `${site.name} — Photography`;
   $("year").textContent = new Date().getFullYear();
-
-  const hero = photos.find((p) => p.id === site.hero) || photos[0];
-  const heroImg = $("hero-img");
-  heroImg.src = hero.large;
-  heroImg.alt = hero.title ? `Featured photo: ${hero.title}` : "Jose Hernandez photography hero image";
 
   const cameras = [...new Set(photos.map((p) => p.exif.camera).filter(Boolean))];
   const cameraNames = { "ILCE-7RM3": "Sony α7R III", "ILCE-7RM4": "Sony α7R IV", "ILCE-7M3": "Sony α7 III", "ILCE-7M4": "Sony α7 IV" };
   if (cameras.length) $("gear").textContent = cameras.map((c) => cameraNames[c] || c).join(" and ");
-
-  const links = $("contact-links");
-  if (site.email) links.insertAdjacentHTML("beforeend", `<a href="mailto:${site.email}">${site.email}</a>`);
-  if (site.instagram) {
-    const handle = site.instagram.replace(/^@/, "");
-    links.insertAdjacentHTML("beforeend", `<a href="https://instagram.com/${handle}" target="_blank" rel="noopener">@${handle}</a>`);
-  }
-  if (!links.children.length) links.innerHTML = `<span class="placeholder">Add email / instagram in photos.meta.json</span>`;
 
   // Top bar background after scrolling past the top
   const topbar = document.querySelector(".topbar");
@@ -43,13 +25,14 @@
   ["All", ...categories].forEach((cat) => {
     const b = document.createElement("button");
     b.type = "button";
-    b.role = "tab";
     b.textContent = cat;
-    b.setAttribute("aria-selected", cat === current);
+    b.setAttribute("aria-pressed", cat === current);
     b.addEventListener("click", () => {
       current = cat;
-      filters.querySelectorAll("button").forEach((x) => x.setAttribute("aria-selected", x === b));
+      filters.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
       renderGallery();
+      const label = cat === "All" ? "all" : cat;
+      $("gallery-status").textContent = `Showing ${visible.length} ${visible.length === 1 ? "photo" : "photos"} in ${label}`;
     });
     filters.appendChild(b);
   });
@@ -73,10 +56,25 @@
       const tile = document.createElement("button");
       tile.className = "tile";
       tile.style.setProperty("--r", p.ratio);
-      tile.setAttribute("aria-label", `Open ${p.title}`);
-      tile.innerHTML = `
-        <img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async">
-        <span class="tile-cap"><strong>${p.title}</strong><span>${p.category}</span></span>`;
+      tile.type = "button";
+      tile.setAttribute("aria-haspopup", "dialog");
+      tile.setAttribute("aria-label", `Open ${p.title}: ${p.alt}`);
+
+      const img = new Image();
+      img.alt = p.alt;
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.src = p.thumb;
+
+      const cap = document.createElement("span");
+      cap.className = "tile-cap";
+      const capTitle = document.createElement("strong");
+      capTitle.textContent = p.title;
+      const capCategory = document.createElement("span");
+      capCategory.textContent = p.category;
+      cap.append(capTitle, capCategory);
+
+      tile.append(img, cap);
       tile.addEventListener("click", () => openLightbox(i));
       gallery.appendChild(tile);
       reveal.observe(tile);
@@ -95,7 +93,8 @@
     lbImg.classList.add("loading");
     lbImg.onload = () => lbImg.classList.remove("loading");
     lbImg.src = p.large;
-    lbImg.alt = p.title;
+    lbImg.alt = p.alt;
+    $("lb-position").textContent = `Photo ${index + 1} of ${visible.length}: `;
     $("lb-title").textContent = p.title;
     $("lb-cat").textContent = p.category;
     const e = p.exif;
