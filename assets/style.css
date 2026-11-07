@@ -1,13 +1,12 @@
 :root {
-  --bg: #0e0e0f;
-  --surface: #17171a;
-  --text: #ecebe7;
-  --muted: #9a9892;
-  --line: #2a2a2e;
-  --accent: #e2b04a;
+  --bg: #243448;
+  --surface: #1c2d3e;
+  --text: #e8edf2;
+  --muted: #7a95ab;
+  --line: #3a5170;
+  --accent: #5bb8d4;
   --row: clamp(160px, 18vw, 320px);
   --gap: 8px;
-  --serif: "Instrument Serif", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
@@ -15,15 +14,31 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--bg);
+  background: linear-gradient(180deg, #243448 0%, #162230 100%);
   color: var(--text);
   font: 400 16px/1.6 var(--sans);
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; }
 img { display: block; max-width: 100%; }
-h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; margin: 0; }
+h1, h2 { font-family: var(--sans); font-weight: 800; letter-spacing: -0.02em; margin: 0; }
 h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
+button, input { font: inherit; }
+
+.skip-link {
+  position: absolute;
+  left: 24px;
+  top: -100px;
+  z-index: 30;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+.skip-link:focus { top: 12px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* Top bar */
 .topbar {
@@ -33,10 +48,11 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
   transition: background .3s, backdrop-filter .3s;
 }
 .topbar.scrolled { background: rgba(14,14,15,.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.brand { font-family: var(--serif); font-size: 1.5rem; text-decoration: none; }
+.brand { font-family: var(--sans); font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: -0.02em; }
 .topbar nav { display: flex; gap: clamp(14px, 3vw, 32px); }
 .topbar nav a { text-decoration: none; font-size: .9rem; color: var(--muted); transition: color .2s; }
 .topbar nav a:hover { color: var(--text); }
+.topbar nav a:focus-visible { color: var(--text); }
 
 /* Hero */
 .hero { position: relative; height: 100svh; min-height: 520px; overflow: hidden; }
@@ -46,10 +62,11 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
 .hero-text { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 clamp(16px, 4vw, 48px) clamp(40px, 8vh, 88px); max-width: 900px; }
 .eyebrow { text-transform: uppercase; letter-spacing: .2em; font-size: .75rem; color: var(--accent); margin: 0 0 12px; }
 .hero h1 { font-size: clamp(3rem, 9vw, 7.5rem); line-height: .95; }
-.tagline { font-size: clamp(1rem, 1.6vw, 1.2rem); color: #d6d4ce; margin: 18px 0 28px; max-width: 34em; }
+.tagline { font-size: clamp(1rem, 1.6vw, 1.2rem); color: #dfeaf8; margin: 18px 0 28px; max-width: 34em; }
 .cta {
   display: inline-block; padding: 12px 22px; border: 1px solid rgba(255,255,255,.5); border-radius: 999px;
   text-decoration: none; font-size: .9rem; transition: background .2s, color .2s, border-color .2s;
+  background: rgba(91, 184, 212, 0.08);
 }
 .cta:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 
@@ -112,7 +129,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
 .lb-figure img { max-height: calc(100vh - 150px); max-height: calc(100dvh - 150px); max-width: 100%; object-fit: contain; transition: opacity .25s; }
 .lb-figure img.loading { opacity: .25; }
 .lb-figure figcaption { width: 100%; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 24px; padding-top: 16px; }
-.lb-title { font-family: var(--serif); font-size: 1.6rem; margin-right: 12px; }
+.lb-title { font-family: var(--sans); font-weight: 700; font-size: 1.6rem; margin-right: 12px; }
 .lb-cat { color: var(--accent); font-size: .8rem; text-transform: uppercase; letter-spacing: .14em; }
 .lb-exif { display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--muted); font-size: .82rem; font-variant-numeric: tabular-nums; }
 .lb-nav, .lb-close {

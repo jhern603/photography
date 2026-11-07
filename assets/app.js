@@ -15,7 +15,9 @@
   $("year").textContent = new Date().getFullYear();
 
   const hero = photos.find((p) => p.id === site.hero) || photos[0];
-  $("hero-img").src = hero.large;
+  const heroImg = $("hero-img");
+  heroImg.src = hero.large;
+  heroImg.alt = hero.title ? `Featured photo: ${hero.title}` : "Jose Hernandez photography hero image";
 
   const cameras = [...new Set(photos.map((p) => p.exif.camera).filter(Boolean))];
   const cameraNames = { "ILCE-7RM3": "Sony α7R III", "ILCE-7RM4": "Sony α7R IV", "ILCE-7M3": "Sony α7 III", "ILCE-7M4": "Sony α7 IV" };
@@ -106,13 +108,19 @@
     });
   }
 
+  let lastFocused = null;
+
   function openLightbox(i) {
+    lastFocused = document.activeElement;
     show(i);
     if (!lb.open) lb.showModal();
   }
 
   function closeLightbox() {
     lb.close();
+    if (lastFocused && typeof lastFocused.focus === "function") {
+      lastFocused.focus();
+    }
   }
 
   lb.addEventListener("close", () => history.replaceState(null, "", "#work"));
@@ -125,6 +133,7 @@
   });
   document.addEventListener("keydown", (e) => {
     if (!lb.open) return;
+    if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowLeft") show(index - 1);
     if (e.key === "ArrowRight") show(index + 1);
   });
