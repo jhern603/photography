@@ -14,6 +14,7 @@ originals never reach the site. Only the camera settings listed below are kept.
 """
 
 import datetime
+import hashlib
 import html
 import json
 import re
@@ -120,6 +121,14 @@ def structured_data(site, photos):
     return json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 
 
+def version_assets(page):
+    """Stamp asset URLs with a content hash, so new HTML never runs against cached old files."""
+    def stamp(m):
+        digest = hashlib.sha256((ROOT / m[2]).read_bytes()).hexdigest()[:10]
+        return f'{m[1]}{m[2]}?v={digest}"'
+    return re.sub(r'((?:src|href)="/?)(assets/[\w.-]+|photos\.js)(?:\?v=\w+)?"', stamp, page)
+
+
 def write_index(site, photos):
     """Put the content crawlers and no-JS visitors need directly into index.html."""
     path = ROOT / "index.html"
@@ -167,7 +176,10 @@ def write_index(site, photos):
                      f'width="{tw}" height="{th}" loading="lazy" decoding="async">{e(p["title"])}</a></li>')
     page = fill_block(page, "noscript", '        <noscript><ul class="noscript-gallery">\n'
                       + "\n".join(items) + "\n        </ul></noscript>")
-    path.write_text(page, encoding="utf-8")
+    path.write_text(version_assets(page), encoding="utf-8")
+
+    not_found = ROOT / "404.html"
+    not_found.write_text(version_assets(not_found.read_text(encoding="utf-8")), encoding="utf-8")
 
 
 def write_sitemap(site, photos):
