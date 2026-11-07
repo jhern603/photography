@@ -1,6 +1,8 @@
 {
   "site": {
     "name": "Jose Hernandez",
+    "url": "https://photos.josehernandez.dev/",
+    "portfolio": "https://josehernandez.dev/",
     "tagline": "Architecture, aviation, and the people in between.",
     "email": "jhern603@gmail.com",
     "instagram": "jahphotography7",
@@ -16,95 +18,118 @@
   "photos": {
     "DSC00184.jpg": {
       "title": "College of Business",
-      "category": "Architecture"
+      "category": "Architecture",
+      "alt": "Low-angle view of wide concrete steps and a perforated metal railing leading to the FIU College of Business, under a sunlit blue sky."
     },
     "DSC01559.jpg": {
       "title": "Ryder Business Building",
-      "category": "Architecture"
+      "category": "Architecture",
+      "alt": "Glass-fronted building with a pyramid roof and flagpoles, framed by tall palm trees across a green lawn."
     },
     "DSC02883.jpg": {
       "title": "Window Rhythm",
-      "category": "Architecture"
+      "category": "Architecture",
+      "alt": "Upward angle along a grey multi-storey facade with repeating rows of shaded windows against a cloudy sky."
     },
     "DSC07317.jpg": {
       "title": "Spiral Stair",
-      "category": "Architecture"
+      "category": "Architecture",
+      "alt": "Ornate spiral staircase with a wrought-iron and gold railing, curving above a checkered floor in warm orange light."
     },
     "DSC01164.jpg": {
       "title": "Campus After Dark",
-      "category": "Night"
+      "category": "Night",
+      "alt": "Long-exposure night view down an empty campus road, with white light trails between lit buildings and palm trees."
     },
     "DSC01713.jpg": {
       "title": "Panther on Watch",
-      "category": "Night"
+      "category": "Night",
+      "alt": "Bronze panther statue on a round stone base at night, in front of a brightly lit convocation center."
     },
     "DSC06287.jpg": {
       "title": "Atlas 747 on Final",
-      "category": "Aviation"
+      "category": "Aviation",
+      "alt": "Atlas Air Boeing 747 with its landing gear down on final approach, against a partly cloudy blue sky."
     },
     "DSC06305.jpg": {
       "title": "American A321",
-      "category": "Aviation"
+      "category": "Aviation",
+      "alt": "American Airlines Airbus A321 with its landing gear down, flying against a blue sky with scattered clouds."
     },
     "DSC05187.jpg": {
       "title": "Cardboard Regatta",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Cardboard boat breaking apart in a splash on a campus lake, as other paddlers race and crowds watch under colorful pennants."
     },
     "DSC04282.jpg": {
       "title": "Spikeball",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Yellow Spikeball net and ball at ground level on a turf field, with blurred players and a goalpost behind."
     },
     "DSC06600 (1).jpg": {
       "title": "Whiteboard Session",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Overhead view of two people at a table, one writing project notes directly on the whiteboard surface next to a laptop."
     },
     "DSC06619 (1).jpg": {
       "title": "The Build",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Person with sunglasses on their head concentrating as they assemble a small red frame by hand in a bright room."
     },
     "DSC01380.jpg": {
       "title": "The Blitz",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Rugby player in black carrying the ball on a grass field, squaring up to a defender in a light blue striped jersey."
     },
     "DSC00017.jpg": {
       "title": "The Tackle",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Rugby player in yellow sprinting away with the ball as tacklers in black and a teammate fall to the grass behind."
     },
     "DSC02885.jpg": {
       "title": "Spawnpoint",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Player lying in the sand on a beach, looking up as other players' legs run past and kick up sand."
     },
     "DSC02804.jpg": {
       "title": "Flying Watermelon",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Player on a beach kicking a watermelon like a rugby ball as two others watch, with parked cars and the sea behind."
     },
     "DSC02722.jpg": {
       "title": "Ball Drop",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Beach rugby players crashing to the ground in a tackle, surrounded by a cloud of sand as teammates close in."
     },
     "DSC04749.jpg": {
       "title": "Mr & Mrs",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Black and white photo of a round wedding table sign reading Mrs & Mr on sand, with a floral invitation card on top."
     },
     "DSC04775-Edit.jpg": {
       "title": "The Wedding Rings",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Close-up of gold wedding rings, one set with three round diamonds, resting on soft ivory fabric beside pearls."
     },
     "DSC05376.jpg": {
       "title": "Celebration",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Bride in a white dress holding her bouquet high on a beach while bridesmaids in light blue gowns jump and cheer beside her."
     },
     "DSC04949.jpg": {
       "title": "The Promised Kiss",
-      "category": "People & Events"
+      "category": "People & Events",
+      "alt": "Black and white photo of a bride and groom kissing at a beach ceremony, the bride holding a bouquet, the sea behind them."
     },
     "DSC07324.jpg": {
       "title": "Vanishing Point",
-      "category": "Details"
+      "category": "Details",
+      "alt": "Ground-level view along railroad tracks and gravel, converging into a blurred skyline in the distance."
     },
     "DSC07372.jpg": {
       "title": "Radar Scope",
-      "category": "Details"
+      "category": "Details",
+      "alt": "Vintage radar scope with a glowing amber screen and a control panel of black dials in a dim equipment room."
     }
   }
 }

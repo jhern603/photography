@@ -1,6 +1,8 @@
 window.PORTFOLIO = {
   "site": {
     "name": "Jose Hernandez",
+    "url": "https://photos.josehernandez.dev/",
+    "portfolio": "https://josehernandez.dev/",
     "tagline": "Architecture, aviation, and the people in between.",
     "email": "jhern603@gmail.com",
     "instagram": "jahphotography7",
@@ -17,6 +19,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc00184",
       "title": "College of Business",
+      "alt": "Low-angle view of wide concrete steps and a perforated metal railing leading to the FIU College of Business, under a sunlit blue sky.",
       "category": "Architecture",
       "ratio": 1.7782,
       "thumb": "img/thumb/dsc00184.jpg",
@@ -34,6 +37,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc01559",
       "title": "Ryder Business Building",
+      "alt": "Glass-fronted building with a pyramid roof and flagpoles, framed by tall palm trees across a green lawn.",
       "category": "Architecture",
       "ratio": 1.4999,
       "thumb": "img/thumb/dsc01559.jpg",
@@ -51,6 +55,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc02883",
       "title": "Window Rhythm",
+      "alt": "Upward angle along a grey multi-storey facade with repeating rows of shaded windows against a cloudy sky.",
       "category": "Architecture",
       "ratio": 1.4992,
       "thumb": "img/thumb/dsc02883.jpg",
@@ -68,6 +73,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc07317",
       "title": "Spiral Stair",
+      "alt": "Ornate spiral staircase with a wrought-iron and gold railing, curving above a checkered floor in warm orange light.",
       "category": "Architecture",
       "ratio": 1.4992,
       "thumb": "img/thumb/dsc07317.jpg",
@@ -85,6 +91,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc01164",
       "title": "Campus After Dark",
+      "alt": "Long-exposure night view down an empty campus road, with white light trails between lit buildings and palm trees.",
       "category": "Night",
       "ratio": 1.7782,
       "thumb": "img/thumb/dsc01164.jpg",
@@ -102,6 +109,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc01713",
       "title": "Panther on Watch",
+      "alt": "Bronze panther statue on a round stone base at night, in front of a brightly lit convocation center.",
       "category": "Night",
       "ratio": 1.4993,
       "thumb": "img/thumb/dsc01713.jpg",
@@ -119,6 +127,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc06287",
       "title": "Atlas 747 on Final",
+      "alt": "Atlas Air Boeing 747 with its landing gear down on final approach, against a partly cloudy blue sky.",
       "category": "Aviation",
       "ratio": 1.4993,
       "thumb": "img/thumb/dsc06287.jpg",
@@ -136,6 +145,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc06305",
       "title": "American A321",
+      "alt": "American Airlines Airbus A321 with its landing gear down, flying against a blue sky with scattered clouds.",
       "category": "Aviation",
       "ratio": 1.4999,
       "thumb": "img/thumb/dsc06305.jpg",
@@ -153,6 +163,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc05187",
       "title": "Cardboard Regatta",
+      "alt": "Cardboard boat breaking apart in a splash on a campus lake, as other paddlers race and crowds watch under colorful pennants.",
       "category": "People & Events",
       "ratio": 1.4999,
       "thumb": "img/thumb/dsc05187.jpg",
@@ -170,6 +181,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc04282",
       "title": "Spikeball",
+      "alt": "Yellow Spikeball net and ball at ground level on a turf field, with blurred players and a goalpost behind.",
       "category": "People & Events",
       "ratio": 1.4992,
       "thumb": "img/thumb/dsc04282.jpg",
@@ -187,6 +199,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc06600-1",
       "title": "Whiteboard Session",
+      "alt": "Overhead view of two people at a table, one writing project notes directly on the whiteboard surface next to a laptop.",
       "category": "People & Events",
       "ratio": 1.4992,
       "thumb": "img/thumb/dsc06600-1.jpg",
@@ -204,6 +217,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc06619-1",
       "title": "The Build",
+      "alt": "Person with sunglasses on their head concentrating as they assemble a small red frame by hand in a bright room.",
       "category": "People & Events",
       "ratio": 1.4992,
       "thumb": "img/thumb/dsc06619-1.jpg",
@@ -221,6 +235,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc01380",
       "title": "The Blitz",
+      "alt": "Rugby player in black carrying the ball on a grass field, squaring up to a defender in a light blue striped jersey.",
       "category": "People & Events",
       "ratio": 1.4992,
       "thumb": "img/thumb/dsc01380.jpg",
@@ -238,6 +253,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc00017",
       "title": "The Tackle",
+      "alt": "Rugby player in yellow sprinting away with the ball as tacklers in black and a teammate fall to the grass behind.",
       "category": "People & Events",
       "ratio": 1.4994,
       "thumb": "img/thumb/dsc00017.jpg",
@@ -255,6 +271,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc02885",
       "title": "Spawnpoint",
+      "alt": "Player lying in the sand on a beach, looking up as other players' legs run past and kick up sand.",
       "category": "People & Events",
       "ratio": 1.4991,
       "thumb": "img/thumb/dsc02885.jpg",
@@ -272,6 +289,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc02804",
       "title": "Flying Watermelon",
+      "alt": "Player on a beach kicking a watermelon like a rugby ball as two others watch, with parked cars and the sea behind.",
       "category": "People & Events",
       "ratio": 1.4991,
       "thumb": "img/thumb/dsc02804.jpg",
@@ -289,6 +307,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc02722",
       "title": "Ball Drop",
+      "alt": "Beach rugby players crashing to the ground in a tackle, surrounded by a cloud of sand as teammates close in.",
       "category": "People & Events",
       "ratio": 1.4992,
       "thumb": "img/thumb/dsc02722.jpg",
@@ -306,6 +325,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc04749",
       "title": "Mr & Mrs",
+      "alt": "Black and white photo of a round wedding table sign reading Mrs & Mr on sand, with a floral invitation card on top.",
       "category": "People & Events",
       "ratio": 1.4993,
       "thumb": "img/thumb/dsc04749.jpg",
@@ -323,6 +343,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc04775-edit",
       "title": "The Wedding Rings",
+      "alt": "Close-up of gold wedding rings, one set with three round diamonds, resting on soft ivory fabric beside pearls.",
       "category": "People & Events",
       "ratio": 1.3335,
       "thumb": "img/thumb/dsc04775-edit.jpg",
@@ -340,6 +361,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc05376",
       "title": "Celebration",
+      "alt": "Bride in a white dress holding her bouquet high on a beach while bridesmaids in light blue gowns jump and cheer beside her.",
       "category": "People & Events",
       "ratio": 1.4991,
       "thumb": "img/thumb/dsc05376.jpg",
@@ -357,6 +379,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc04949",
       "title": "The Promised Kiss",
+      "alt": "Black and white photo of a bride and groom kissing at a beach ceremony, the bride holding a bouquet, the sea behind them.",
       "category": "People & Events",
       "ratio": 0.667,
       "thumb": "img/thumb/dsc04949.jpg",
@@ -374,6 +397,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc07324",
       "title": "Vanishing Point",
+      "alt": "Ground-level view along railroad tracks and gravel, converging into a blurred skyline in the distance.",
       "category": "Details",
       "ratio": 1.5001,
       "thumb": "img/thumb/dsc07324.jpg",
@@ -391,6 +415,7 @@ window.PORTFOLIO = {
     {
       "id": "dsc07372",
       "title": "Radar Scope",
+      "alt": "Vintage radar scope with a glowing amber screen and a control panel of black dials in a dim equipment room.",
       "category": "Details",
       "ratio": 1.4992,
       "thumb": "img/thumb/dsc07372.jpg",

@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://photos.josehernandez.dev/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc00184.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc01559.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc02883.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc07317.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc01164.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc01713.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc06287.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc06305.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc05187.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc04282.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc06600-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc06619-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc01380.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc00017.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc02885.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc02804.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc02722.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc04749.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc04775-edit.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc05376.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc04949.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc07324.jpg</image:loc></image:image>
+    <image:image><image:loc>https://photos.josehernandez.dev/img/large/dsc07372.jpg</image:loc></image:image>
   </url>
 </urlset>
